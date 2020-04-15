@@ -1,0 +1,19 @@
+{
+    "credentials" : {
+        "user"                          : $USERNAME,
+        "password"                      : $PASSWORD
+    },
+    "data" : {
+        "weight_start_date"             : $STARTDATE,
+        "sleep_start_date"              : $STARTDATE,
+        "rhr_start_date"                : $STARTDATE,
+        "monitoring_start_date"         : $STARTDATE,
+        "download_days"                 : $DOWNLOADDAYS,
+        "download_latest_activities"    : $DOWNLOADLATESTACTIVITIES,
+        "download_all_activities"       : $DOWNLOADALLACTIVITIES,
+        "download_days_overlap"         : $DOWNLOADDAYSOVERLAP
+    },
+    "copy" : {
+        "mount_dir"                     : "/Volumes/GARMIN"
+    }
+}
