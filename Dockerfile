@@ -13,7 +13,7 @@ RUN pip install sqlalchemy requests python-dateutil enum34 progressbar2 lxml
 WORKDIR /usr/src/app
 ARG repo=8cH9azbsFifZ
 #ARG repo=tcgoetz # Alternative 
-RUN git clone "https://github.com/${repo}/GarminDB.git"
+RUN git clone https://github.com/${repo}/GarminDB.git
 RUN git clone https://github.com/$repo/python-tcxparser.git
 RUN git clone https://github.com/$repo/Fit.git
 RUN git clone https://github.com/$repo/utilities.git
