@@ -4,7 +4,7 @@ MAINTAINER Gerolf Ziegenhain "gerolf.ziegenhain@gmail.com"
 # Install dependencies
 RUN apt-get update
 RUN apt-get -y install build-essential git python python-pip gettext 
-#RUN apt-get -y install build-essential git python3 python-pip3 gettext 
+#RUN apt-get -y install build-essential git python3 python-pip3 gettext # For tcgoetz repo
 RUN apt-get -y install vim
 RUN pip install sqlalchemy requests python-dateutil enum34 progressbar2 lxml
 
