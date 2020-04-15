@@ -1,0 +1,16 @@
+version: '3'
+services:
+ download:
+  image: asdlfkj31h/garmindb:1.0.8.2
+  environment:
+   - USERNAME="mrx"
+   - PASSWORD="mypassword"
+   - STARTDATE="02/02/2019"
+   - DOWNLOADDAYS=5
+   - DOWNLOADALLACTIVITIES=5
+   - DOWNLOADLATESTACTIVITIES=5
+   - DOWNLOADDAYSOVERLAP=0
+  container_name: download-garmindb
+  command: ./run_garmin --download --latest --monitoring
+  volumes:
+   - ./HealthData:/root/HealthData
