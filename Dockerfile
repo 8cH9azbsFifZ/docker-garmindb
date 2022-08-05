@@ -1,32 +1,29 @@
-FROM debian:buster-slim
+#FROM debian:bullseye
+FROM python
 MAINTAINER Gerolf Ziegenhain "gerolf.ziegenhain@gmail.com"
 
 # Install dependencies
-RUN apt-get update
-RUN apt-get -y install build-essential git python python-pip gettext 
-#RUN apt-get -y install build-essential git python3 python-pip3 gettext # For tcgoetz repo
-RUN apt-get -y install vim
-RUN pip install sqlalchemy requests python-dateutil enum34 progressbar2 lxml
+RUN pip3 install sqlalchemy requests python-dateutil enum34 progressbar2 lxml 
+RUN pip3 install pillow pexpect parso pandocfilters numpy nest-asyncio MarkupSafe kiwisolver
+RUN pip3 install fonttools fitfile entrypoints defusedxml decorator debugpy cycler bleach 
+RUN pip3 install attrs asttokens traittypes terminado tcxfile stack-data requests-toolbelt packaging
+RUN pip3 install garmindb
 
+RUN apt-get update 
+RUN apt-get -y install gettext vim
+RUN apt-get -y install jq
 
-# The makefile does not work properly, so force manual installation
-WORKDIR /usr/src/app
-ARG repo=8cH9azbsFifZ
-#ARG repo=tcgoetz # Alternative 
-RUN git clone https://github.com/${repo}/GarminDB.git
-RUN git clone https://github.com/$repo/python-tcxparser.git
-RUN git clone https://github.com/$repo/Fit.git
-RUN git clone https://github.com/$repo/utilities.git
-RUN rm -rf GarminDB/Fit ; mv Fit GarminDB
-RUN rm -rf GarminDB/utilities ; mv utilities GarminDB
-RUN cd python-tcxparser ; python setup.py install
+WORKDIR /root/.GarminDb
+#ADD ./GarminConnectConfig.json ./GarminConnectConfig.variables.json
+RUN cp /usr/local/lib/python3.10/site-packages/garmindb/GarminConnectConfig.json.example /root/.GarminDb
 
-# Install time for use of Makefile as provided by tcgoetz
-RUN apt-get -y install time
-
-# Prepare the configuration scripts
-ADD ./GarminConnectConfig.json ./
-WORKDIR /usr/src/app/GarminDB
+WORKDIR /root
 ADD ./run_garmin ./
+
+ENV USERNAME "test"
+ENV PASSWORD "pass"
+ENV STARTDATE "01/01/2021"
+ENV LATEST "20"
+ENV ALL "111"
 
 CMD ["./run_garmin", "--help"]

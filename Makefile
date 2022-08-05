@@ -1,4 +1,4 @@
-VER=1.0.8.2
+VER=1.0.11
 build:
 	docker build . -t garmindb -t asdlfkj31h/garmindb:${VER} -t asdlfkj31h/garmindb:latest
 

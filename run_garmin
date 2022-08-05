@@ -1,3 +1,4 @@
 #!/bin/bash
-envsubst <  ../GarminConnectConfig.json > GarminConnectConfig.json
-python garmin.py $@
+
+cat .GarminDb/GarminConnectConfig.json.example |jq '.credentials.user = $new|.credentials.password = $newp|.data.weight_start_date = $newdate|.data.sleep_start_date = $newdate|.data.rhr_start_date = $newdate|.data.monitoring_start_date = $newdate|.data.download_latest_activities = $newlatest|.data.download_all_activities = $newall' --arg new "$USERNAME" --arg newp "$PASSWORD" --arg newdate "$STARTDATE" --arg newlatest "$LATEST" --arg newall "$ALL" > .GarminDb/GarminConnectConfig.json
+
