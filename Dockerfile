@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:latest
 MAINTAINER Gerolf Ziegenhain "gerolf.ziegenhain@gmail.com"
 
 # Install dependencies
