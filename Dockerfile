@@ -1,14 +1,11 @@
-FROM python
-MAINTAINER Gerolf Ziegenhain "gerolf.ziegenhain@gmail.com"
+FROM python:3.11
 
 # Install dependencies
 RUN pip3 install garmindb
-
-RUN apt-get update 
-RUN apt-get -y install jq
+RUN apt-get update && apt-get -y install jq
 
 WORKDIR /root/.GarminDb
-RUN cp /usr/local/lib/python3.10/site-packages/garmindb/GarminConnectConfig.json.example /root/.GarminDb
+RUN cp /usr/local/lib/python3.11/site-packages/garmindb/GarminConnectConfig.json.example /root/.GarminDb
 
 WORKDIR /root
 ADD ./run_garmin ./
