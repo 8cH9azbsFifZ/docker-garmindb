@@ -1,7 +1,7 @@
 version: '3'
 services:
  download:
-  image: asdlfkj31h/garmindb:1.0.8.2
+  image: ghcr.io/8ch9azbsfifz/docker-garmindb:latest
   environment:
    - USERNAME="mrx"
    - PASSWORD="mypassword"
