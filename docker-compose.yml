@@ -1,16 +1,18 @@
-version: '3'
-services:
- download:
-  image: ghcr.io/8ch9azbsfifz/docker-garmindb:latest
-  environment:
-   - USERNAME="mrx"
-   - PASSWORD="mypassword"
-   - STARTDATE="02/02/2019"
-   - DOWNLOADDAYS=5
-   - DOWNLOADALLACTIVITIES=5
-   - DOWNLOADLATESTACTIVITIES=5
-   - DOWNLOADDAYSOVERLAP=0
-  container_name: download-garmindb
-  command: ./run_garmin --download --latest --monitoring
-  volumes:
-   - ./HealthData:/root/HealthData
+# ONLY RUN IF CONTAINER IS DEPLOYED, ALSO NOT SURE WHAT THOSE ENV VARS DO - PERHAPS THIS CONTAINER WE REFERENCE IS SOME SORT OF NEWER VERSION.
+
+# version: '3'
+# services:
+#  download:
+#   image: ghcr.io/8ch9azbsfifz/docker-garmindb:latest
+#   environment:
+#    - USERNAME="mrx"
+#    - PASSWORD="mypassword"
+#    - STARTDATE="02/02/2019"
+#    - DOWNLOADDAYS=5
+#    - DOWNLOADALLACTIVITIES=5
+#    - DOWNLOADLATESTACTIVITIES=5
+#    - DOWNLOADDAYSOVERLAP=0
+#   container_name: download-garmindb
+#   command: ./run_garmin --download --latest --monitoring
+#   volumes:
+#    - ./HealthData:/root/HealthData

@@ -10,10 +10,12 @@ RUN cp /usr/local/lib/python3.11/site-packages/garmindb/GarminConnectConfig.json
 WORKDIR /root
 ADD ./run_garmin ./
 
-ENV USERNAME "test"
-ENV PASSWORD "pass"
-ENV STARTDATE "01/01/2021"
-ENV LATEST "20"
-ENV ALL "111"
+ARG USERNAME
+ARG PASSWORD
+ENV USERNAME $USERNAME
+ENV PASSWORD $PASSWORD
+ENV STARTDATE "01/01/2019"
+ENV LATEST 30
+ENV ALL 2000
 
 CMD ["./run_garmin"]
