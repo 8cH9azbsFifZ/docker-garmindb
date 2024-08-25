@@ -1,4 +1,4 @@
-VER=1.1.0
+VER=2.0.0
 build:
 	docker build . -t garmindb -t asdlfkj31h/garmindb:${VER} -t asdlfkj31h/garmindb:latest
 run_all: cleanup build
