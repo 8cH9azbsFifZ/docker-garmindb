@@ -1,5 +1,20 @@
 #!/bin/bash
 
-cat .GarminDb/GarminConnectConfig.json.example |jq '.credentials.user = $new|.credentials.password = $newp|.data.weight_start_date = $newdate|.data.sleep_start_date = $newdate|.data.rhr_start_date = $newdate|.data.monitoring_start_date = $newdate|.data.download_latest_activities = $newlatest|.data.download_all_activities = $newall' --arg new "$USERNAME" --arg newp "$PASSWORD" --arg newdate "$STARTDATE" --arg newlatest "$LATEST" --arg newall "$ALL" > .GarminDb/GarminConnectConfig.json
+cat .GarminDb/GarminConnectConfig.json.example | jq --arg new $USERNAME \
+  --arg newp $PASSWORD \
+  --arg newdate $STARTDATE \
+  --argjson newlatest $LATEST \
+  --argjson newall $ALL \
+  '.credentials.user = $new |
+   .credentials.password = $newp |
+   .data.weight_start_date = $newdate |
+   .data.sleep_start_date = $newdate |
+   .data.rhr_start_date = $newdate |
+   .data.monitoring_start_date = $newdate |
+   .data.download_latest_activities = $newlatest |
+   .data.download_all_activities = $newall' > .GarminDb/GarminConnectConfig.json
 
-garmindb_cli.py --download --all --import --analyze
+echo "read more about garmindb here: https://github.com/tcgoetz/GarminDB"
+echo "read more about docker-garmindb here: https://github.com/8cH9azbsFifZ/docker-garmindb"
+
+garmindb_cli.py $1 $2 $3 $4 $5

@@ -1,0 +1,13 @@
+version: '3'
+services:
+  download:
+    image: asdlfkj31h/garmindb:latest
+    environment:
+    - USERNAME=mrx
+    - PASSWORD=mypassword
+    - STARTDATE=01/01/2019
+    # - LATEST=30 # OPTIONAL (DEFAULT: 30)
+    # - ALL=5000 # OPTIONAL (DEFAULT: 5000)
+    container_name: download-garmindb
+    volumes:
+    - ./HealthData:/root/HealthData
