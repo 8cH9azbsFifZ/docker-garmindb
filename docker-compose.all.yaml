@@ -1,0 +1,4 @@
+version: '3'
+services:
+  download:
+    command: ./run_garmin --all --download --import --analyze
